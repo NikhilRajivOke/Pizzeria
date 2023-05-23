@@ -1,0 +1,41 @@
+
+<mat-toolbar class="navbar">
+<mat-toolbar-row>
+    <label>Pizzeria</label>
+    
+    <span><a routerLink="/ourstory"><img src="./assets/PizzeriaLogo.png" alt="Logo" height="50px" width="80px"></a></span>
+   
+    <span><a routerLink="/orderpizza">Order Pizza</a></span>
+    
+    <span><a routerLink="/buildpizza">Build Ur Pizza</a></span>
+
+    <span class="menu-spacer"></span>
+
+    <span matBadge={{length}} matBadgePosition="before" matBadgeColor="accent"><button mat-flat-button colour="warn" [matMenuTriggerFor]="cart" (click)="menu()"><mat-icon >add_shopping_cart</mat-icon>Shopping cart</button></span>
+<mat-menu #cart>
+    <mat-card *ngFor="let i of items" style="height:20%">
+      <mat-card-content style="display:flex">
+          <div>
+          <img src={{i.img}} height="100px" width="150px">
+          <button mat-raised-button color="warn" (click)="RemoveItem(i)">Remove</button>
+          </div>
+          <div style="padding-left:20px">
+          <p>{{i.pizzaname}}</p>
+          <p>{{i.pizzaprice | currency:'INR'}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card> 
+    <mat-card>
+        <mat-card-content>
+          <button mat-flat-button color="primary">Checkout</button>
+          <label>Total Amount : {{ cost | currency:'INR'}}</label>
+        </mat-card-content>
+    </mat-card>
+</mat-menu>
+  </mat-toolbar-row>  
+</mat-toolbar> 
+
+
+
+
+
